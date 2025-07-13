@@ -1,12 +1,10 @@
 package com.auth_service.auth_service.controller;
 
+import com.auth_service.auth_service.model.Role;
 import com.auth_service.auth_service.model.Users;
 import com.auth_service.auth_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -19,9 +17,14 @@ public class UserController {
         return userService.register(user);
     }
 
-    @GetMapping("/getData")
-    public String getName() {
-        return "Hello Shivam";
+    @PostMapping("/login")
+    public String login(@RequestBody Users user) {
+        return userService.verify(user);
+    }
+
+    @GetMapping("/getRole/{token}")
+    public String extractRole(@PathVariable("token") String token) {
+        return userService.extractRole(token);
     }
 
 }
