@@ -3,6 +3,8 @@ package com.auth_service.auth_service.controller;
 import com.auth_service.auth_service.model.Role;
 import com.auth_service.auth_service.model.Users;
 import com.auth_service.auth_service.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,11 @@ public class UserController {
     @GetMapping("/getRole/{token}")
     public String extractRole(@PathVariable("token") String token) {
         return userService.extractRole(token);
+    }
+
+    @GetMapping("/validate")
+    public boolean validate(HttpServletRequest request, HttpServletResponse response) {
+        return userService.validate(request, response);
     }
 
 }
