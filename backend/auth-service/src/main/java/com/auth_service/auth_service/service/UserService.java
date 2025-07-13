@@ -61,14 +61,11 @@ public class UserService {
         return "fail";
     }
 
-    public boolean validate(HttpServletRequest request, HttpServletResponse response) {
+    public boolean validate(String token) {
 
-        String authHeader = request.getHeader("Authorization");
-        String token = null;
         String username = null;
 
-        if (authHeader != null && authHeader.startsWith("Bearer")) {
-            token = authHeader.substring(7);
+        if (token != null) {
             username = jwtService.extractUserName(token);
         }
 
