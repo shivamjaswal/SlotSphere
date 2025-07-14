@@ -1,8 +1,14 @@
+import 'primereact/resources/themes/lara-light-blue/theme.css'
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
+
+import Register from "./component/Register"
+
 function App() {
 
   return (
     <>
-      <h1>Hello World</h1>
+      <Register />
     </>
   )
 }
