@@ -1,12 +1,12 @@
 import { Dropdown } from 'primereact/dropdown';
 import { useState } from 'react';
-import Admin from './Admin';
-import Client from './Client';
-import Provider from './Provider';
+import ClientRegister from '../component/ClientRegister';
+import ProviderRegister from '../component/ProviderRegister';
+import DefaultRegister from '../component/DefaultRegister';
 
 function Register() {
 
-    const [roles, setRoles] = useState(["CLIENT", "PROVIDER", "ADMIN"]);
+    const [roles, setRoles] = useState(["CLIENT", "PROVIDER"]);
     const [selectedRole, setSelectedRole] = useState('');
 
     return (
@@ -26,10 +26,10 @@ function Register() {
             />
             </div>
 
-            <div style={{ marginTop: '2rem' }}>
-                {selectedRole === "CLIENT" && <Client />}
-                {selectedRole === "PROVIDER" && <Provider />}
-                {selectedRole === "ADMIN" && <Admin />}
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+                {selectedRole === "CLIENT" && <ClientRegister />}
+                {selectedRole === "PROVIDER" && <ProviderRegister />}
+                {!selectedRole && <DefaultRegister />}
             </div>
         </>
     );
