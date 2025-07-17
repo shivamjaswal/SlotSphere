@@ -4,11 +4,14 @@ import { useState } from "react";
 import AdminDashboard from "../component/admin/Dashboard";
 import ClientDashboard from "../component/client/Dashboard";
 import ProviderDashboard from "../component/provider/Dashboard";
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     fetch("http://localhost:8085/auth/login", {
@@ -51,15 +54,15 @@ function Login() {
   };
 
   if (role === "ADMIN") {
-    return <AdminDashboard />;
+    return navigate('/admin');
   }
 
   if (role === "CLIENT") {
-    return <ClientDashboard />;
+    return navigate('/client');
   }
 
   if (role === "PROVIDER") {
-    return <ProviderDashboard />;
+    return navigate('/provider');
   }
 
   return (
