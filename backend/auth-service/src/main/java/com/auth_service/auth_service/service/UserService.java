@@ -36,7 +36,7 @@ public class UserService {
         user.setPassword(encoder.encode(user.getPassword()));
 
         if (user.getRole() == null) {
-            user.setRole(Role.USER); // Set default role
+            user.setRole(Role.CLIENT); // Set default role
         }
 
         return userRepo.save(user);

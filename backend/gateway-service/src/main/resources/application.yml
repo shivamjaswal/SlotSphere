@@ -21,6 +21,20 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: provider-service
+          uri: lb://provider-service
+          predicates:
+            - Path=/provider/**
+          filters:
+            - AuthenticationFilter
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - AuthenticationFilter
+
 eureka:
   instance:
     prefer-ip-address: true

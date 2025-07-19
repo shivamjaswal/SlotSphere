@@ -17,6 +17,10 @@ public class AdminService {
         return serviceRepository.save(service);
     }
 
+    public Services getServiceById(int id) {
+        return serviceRepository.findById(id).orElse(null);
+    }
+
     public List<Services> getAllService() {
         return serviceRepository.findAll();
     }

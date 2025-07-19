@@ -1,10 +1,7 @@
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { useState } from "react";
-import AdminDashboard from "../component/admin/Dashboard";
-import ClientDashboard from "../component/client/Dashboard";
-import ProviderDashboard from "../component/provider/Dashboard";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -48,21 +45,18 @@ function Login() {
       .catch((error) => {
         console.error("Error:", error);
       });
-
-    setUsername("");
-    setPassword("");
   };
 
   if (role === "ADMIN") {
-    return navigate('/admin');
+    return navigate("/admin");
   }
 
   if (role === "CLIENT") {
-    return navigate('/client');
+    return navigate("/client", { state: { username } });
   }
 
   if (role === "PROVIDER") {
-    return navigate('/provider');
+    return navigate("/provider", { state: { username } });
   }
 
   return (

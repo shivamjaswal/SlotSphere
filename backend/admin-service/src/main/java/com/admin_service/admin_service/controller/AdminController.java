@@ -19,6 +19,11 @@ public class AdminController {
         return adminService.createService(service);
     }
 
+    @GetMapping("/getServiceById/{id}")
+    public Services getServiceById(@PathVariable("id") int id) {
+        return adminService.getServiceById(id);
+    }
+
     @GetMapping("/getAllService")
     public List<Services> getAllService() {
         return adminService.getAllService();
